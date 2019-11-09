@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html {{ site.language_attributes }}>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{ wp_title }}</title>
+
+  {{ wp_head }}
+</head>
+
+<body class="{{ body_class }}">
+
+{# navigation #}
+<nav class="main-nav">
+  {{ fn('the_custom_logo') }}
+
+  <ul class="nav-items">
+    {% for item in nav.items %}
+      <li class="{{ item.class }}">
+        
+        <a href="{{ item.url }}">
+          {{ item.title }}
+        </a>
+
+        {# Sub nav #}
+        {% if item.children %}
+          <div class="nav-children">
+            {% for child in item.children %}
+              <a href="{{ child.url }}">{{ child.title }}</a>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
+
+
+{% block content %}{% endblock %}
+
+
+{# main footer #}
+<footer class="main-footer">
+  <div class="copyright">
+    <strong>Copyright</strong>  &copy; {{ "now" | date("Y") }} {{ site.name }}
+  </div>
+</footer>
+
+{{ wp_footer }}
+
+</body>
+</html>

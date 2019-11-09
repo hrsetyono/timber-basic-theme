@@ -1,0 +1,17 @@
+{% if pagination.total > 1 %}
+<nav class="pagination">
+
+  {% for p in pagination.pages %}
+    {% if page.link %}
+      
+      <a href="{{page.link}}" class="{{ page.class }}">{{ page.title }}</a>
+
+    {% else %}
+      
+      <span class="{{ page.class }}">{{ page.title }}</span>
+    
+    {% endif %}
+  {% endfor %}
+
+</nav>
+{% endif %}
