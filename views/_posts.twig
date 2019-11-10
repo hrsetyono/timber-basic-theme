@@ -1,18 +1,20 @@
 {% for p in posts %}
 
   <article class="post-tease">
+    
+    <h3>
+      <a href="{{ p.link }}"> {{ p.title }} </a>
+    </h3>
+
     {# if has featured image #}
     {% if p.thumbnail %}
       <img src="{{ p.thumbnail.src('thumbnail') }}" alt="{{ p.title }}">
     {% endif %}
-
-    <a href="{{ p.link }}">
-      <h3>{{ p.title }}</h3>
-      <p> {{ p.preview.length(25) }} </p>
-    </a>
+    
+    <p> {{ p.preview.length(25) }} </p>
 
     <p>
-      Written by {{ post.author.display_name }} on <time>{{ post.post_date | date }}</time>
+      Written by {{ p.author.display_name }} on <time>{{ p.post_date | date }}</time>
     </p>
   </article>
 
