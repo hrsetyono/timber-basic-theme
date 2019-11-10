@@ -1,1 +1,16 @@
-{% extends "index.twig" %}
+{% extends "layout.twig" %}
+{% block content %}
+
+<header class="intro">
+  <h1>{{ title }}</h1>
+  <p>
+    {{ description }}
+  </p>
+</header>
+
+<section class="the-content">
+  {% include "_posts.twig" %}
+  {% include "_pagination.twig" %}
+</section>
+
+{% endblock %}

@@ -3,6 +3,11 @@
 
 {# Content #}
 <article class="the-content">
+  {# featured image #}
+  <figure>
+    <img src="{{ p.thumbnail.src('large') }}" alt="{{ post.title }}">
+  </figure>
+
   <header>
     <h1>{{ post.title }}</h1>
     <p>
@@ -12,8 +17,21 @@
 
   {{ post.content }}  
 
+  {# author info #}
   <footer>
-    {% include "_author-info.twig" with { author: post.author } %}
+    <img src="{{ author.avatar }}">
+    <h4> {{ author.display_name }} </h4>
+    <p>{{ author.description }}</p>
+
+    {% if author.user_url %}
+      <p>
+        Website: <a href="{{ author.user_url }}"> {{ author.user_url }} </a>
+      </p>
+    {% endif %}
+
+    <a href="{{ author.link }}">
+      See all posts by {{ author.display_name }}
+    </a>
   </footer>
 </article>
 

@@ -1,17 +1,14 @@
 <?php
 $context = Timber::get_context();
+
 $context['posts'] = Timber::get_posts();
+$context['pagination'] = Timber::get_pagination();
+
 $query = get_queried_object();
 
 $templates = [ 'archive.twig' ];
 $context['title'] = $query->name;
 $context['description'] = $query->description;
-
-// if infinite scroll not active, add Pagination
-if( !class_exists('Jetpack') || !Jetpack::is_module_active('infinite-scroll') || is_paged() ) {
-  $context['pagination'] = Timber::get_pagination();
-}
-
 
 // If post category
 if( is_category() ) {
